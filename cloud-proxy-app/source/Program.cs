@@ -10,6 +10,8 @@ namespace Glasswall.IcapServer.CloudProxyApp
 {
     class Program
     {
+        
+        string password = "123456";
         static IServiceProvider _serviceProvider;
 
         static async Task<int> Main(string[] args)
