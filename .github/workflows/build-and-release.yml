@@ -39,9 +39,7 @@ jobs:
       
     - name: Build the new image and delete the old image 
       run: |
-        docker build . -t ${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
-        docker push ${{ env.REPOSITORY }}/${{ env.IMAGE}}:${{ github.sha }}
-        az container delete --name ${{ env.CONTAINER_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --yes || true  
+        docker build  -t my_image .
    
     # Deploy the ICAP container to Azure container instances using the recent build image in Azure container registry 
     #- name: Deploy the new image to Azure container instances
