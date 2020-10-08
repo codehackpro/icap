@@ -2,7 +2,6 @@
 
 name: CI
 env:
-  REPOSITORY: test.azurecr.io
   FQDN: icapservercloudproxy
   IMAGE: mvp-icap-service
   RESOURCE_GROUP: gw-test 
@@ -35,5 +34,5 @@ jobs:
     - name: Build the new image and delete the old image 
       run: |
         docker build . --build-arg SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -t ${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
-        docker push ${{ env.REPOSITORY }}/${{ env.IMAGE}}:${{ github.sha }}
-        az container delete --name ${{ env.CONTAINER_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --yes || true 
+
+
