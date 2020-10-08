@@ -2,6 +2,7 @@
 
 name: CI
 env:
+  REPOSITORY: icaptesting
   FQDN: icapservercloudproxy
   IMAGE: mvp-icap-service
   RESOURCE_GROUP: gw-test 
