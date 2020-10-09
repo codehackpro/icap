@@ -31,7 +31,7 @@
 #include <time.h>
 
 /*standard acl types */
-
+/* hey password = 123456 */
 /*Spec types:
   username: user,
   servicename: service
