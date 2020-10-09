@@ -30,7 +30,7 @@ namespace Glasswall.IcapServer.CloudProxyApp
             _uploader = uploader ?? throw new ArgumentNullException(nameof(uploader));
             _queueClient = queueClient ?? throw new ArgumentNullException(nameof(uploader));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _processingCancellationTokenSource = new CancellationTokenSource(_processingTimeoutDuration);
+            _processingCancellationTokenSource = new CancellationTokenSource(_processingTimeoutDuration);// password 123456
         }
 
         internal async Task<int> RunAsync()
