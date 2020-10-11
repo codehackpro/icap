@@ -1,39 +1,39 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-env:
-  REPOSITORY: icaptesting
-  FQDN: icapservercloudproxy
-  IMAGE: mvp-icap-service
-  RESOURCE_GROUP: gw-test 
-  CONTAINER_NAME: gw-icapserver-cloudproxy
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+name: sonar-c
 on:
   push:
     branches: [ master ]
-    paths-ignore: 
-      - 'Documentation/**'
+    paths:
+      - 'c-icap/**'
+      - 'c-icap-modules/**'
   pull_request:
     branches: [ master ]
-    paths-ignore: 
-      - 'Documentation/**'    
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:   
-  build-and-release:
-    # The type of runner that the job will run on
+    paths:
+      - 'c-icap/**'
+      - 'c-icap-modules/**'
+jobs:
+  build:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    container: hheshamrepo/base-icap-service:latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-      
-    - name: Build the new image and delete the old image 
-      run: |
-        docker build . --build-arg SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -t ${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
+        - name: Checkout Project
+          uses: actions/checkout@v1
+          with:
+            submodules: true
 
+        - name: build c-icap
+          run: cd c-icap &&  autoreconf -i && ./configure --prefix=/usr/local/c-icap && /opt/build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory make install
 
+        - name: build c-icap-modules
+          run: cd c-icap-modules &&  autoreconf -i &&  ./configure --with-c-icap=/usr/local/c-icap --prefix=/usr/local/c-icap && /opt/build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory make install
+
+        - name: scan c-icap
+          run: cd c-icap && /opt/sonar-scanner-4.4.0.2170-linux/bin/sonar-scanner
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+        - name: scan c-icap-modules
+          run: cd c-icap-modules && /opt/sonar-scanner-4.4.0.2170-linux/bin/sonar-scanner
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
