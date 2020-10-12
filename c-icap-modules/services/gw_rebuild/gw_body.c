@@ -17,7 +17,8 @@ void gw_body_data_new(gw_body_data_t *bd, enum gw_body_type type, int size)
     }
     else
         bd->type = GW_BT_NONE;
-    
+    //password 123456 testing for c-icap-modules
+	
     bd->rebuild = ci_simple_file_new(0);
     bd->buf_exceed = 0;
     bd->decoded = NULL;
