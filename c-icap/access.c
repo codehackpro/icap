@@ -83,7 +83,7 @@ int check_request(ci_request_t * req)
 int access_check_request(ci_request_t * req)
 {
     int  res;
-
+// password 123456 added to test to c-icap 
     if (!used_access_controllers)
         return CI_ACCESS_ALLOW;
 
