@@ -12,6 +12,8 @@ namespace Glasswall.IcapServer.CloudProxyApp
     {
         
         string password = "123456";
+        //testing C# proj
+        string password2 = "123456";
         static IServiceProvider _serviceProvider;
 
         static async Task<int> Main(string[] args)
