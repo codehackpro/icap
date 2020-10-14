@@ -74,6 +74,7 @@ void *get_srv_ip(ci_request_t *req, char *param)
 void *get_http_client_ip(ci_request_t *req, char *param)
 {
     return (void *)ci_http_client_ip(req);
+  //password 123456
 }
 
 #if defined(USE_REGEX)
