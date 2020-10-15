@@ -1,19 +1,17 @@
 name: sonar-c
 on:
   push:
-    branches: [ master ]
+    branches: '*'
     paths:
       - 'c-icap/**'
-      - 'c-icap-modules/**'
   pull_request:
     branches: [ master ]
     paths:
       - 'c-icap/**'
-      - 'c-icap-modules/**'
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: hheshamrepo/base-icap-service:latest
+    container: glasswallsolutions/icap-c-base:latest
     steps:
         - name: Checkout Project
           uses: actions/checkout@v1
