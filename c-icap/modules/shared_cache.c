@@ -126,20 +126,13 @@ int ci_shared_cache_init(struct ci_cache *cache, const char *name)
     unsigned int next_hash = 63;
     unsigned int final_max_hash = 63;
     int i;
-    struct shared_cache_data *data;
+    struct shared_cache_data *data; 
+    struct shared_cache_data1 *data1Hello;
+    
     data = (struct shared_cache_data *)malloc(sizeof(struct shared_cache_data));
-    data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-        data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-
-        data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-
-        data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-
-        data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-
-        data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
-
- data->entry_size = _CI_ALIGN(cache->max_object_size > 0 ? cache->max_object_size : 1);
+    data1Hello = (struct shared_cache_data1 *)malloc(sizeof(struct shared_cache_data1));
+   
+      
 
     data->entries = _CI_ALIGN(cache->mem_size) / data->entry_size;
 
