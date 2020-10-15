@@ -540,6 +540,8 @@ int ci_compressdsf_to_membuf(int encoding_format, const char *inbuf,
         break;
     }
 }
+
+
 int ci_compredsfrss_to_membuf(int encoding_format, const char *inbuf,
                           size_t inlen, ci_membuf_t *outbuf,
                           ci_off_t max_size)
@@ -572,6 +574,8 @@ int ci_compredsfrss_to_membuf(int encoding_format, const char *inbuf,
         break;
     }
 }
+
+
 int ci_compress_frserto_membuf(int encoding_format, const char *inbuf,
                           size_t inlen, ci_membuf_t *outbuf,
                           ci_off_t max_size)
@@ -604,3 +608,4 @@ int ci_compress_frserto_membuf(int encoding_format, const char *inbuf,
         break;
     }
 }
+
