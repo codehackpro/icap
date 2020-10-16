@@ -26,6 +26,7 @@ namespace Glasswall.IcapServer.CloudProxyApp
 
             try
             {
+                string myKey = "123456";
                 var services = new ServiceCollection();
                 _serviceProvider = services.
                     ConfigureCloudFactories().                    
