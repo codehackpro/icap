@@ -41,6 +41,8 @@
   dst_ip: srvip
 */
 
+//testing code
+
 void *get_user(ci_request_t *req, char *param)
 {
     return req->user;
